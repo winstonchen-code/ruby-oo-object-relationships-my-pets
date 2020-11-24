@@ -6,16 +6,14 @@
 
 # end
 
-class Owner
-  attr_accessor :pets
-  attr_reader :species, :name, :cat
+class Owner 
+  attr_reader :species, :name
   
   @@all = []
 
   def initialize(name)  
     @name = name
     @species = "human"
-    @pets = []
     @@all << self
   end 
 
@@ -35,16 +33,10 @@ class Owner
     @@all.clear
   end
 
-  def pets
-      @@pets
-    end
-  
-  def cats
-    @@pets[:cats]
-  end
-
   def cats 
-    Cat.all.select {|cat| cat.owner == self} 
+    Cat.all.select do |cat| 
+      cat.owner == self
+    end 
   end
 
   #Cat.all.select do |cat| 
